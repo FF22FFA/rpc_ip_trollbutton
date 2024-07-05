@@ -48,11 +48,9 @@
             transform: translateX(-50%); /* Center horizontally */
         }
         #imageContainer {
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            transform: translateY(-50%);
-            width: 30%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
         #imageContainer img {
             max-width: 100%;
@@ -69,6 +67,8 @@
         <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡。</p>
         <p id="ipAddress"></p>
     </div>
+
+    <div id="imageContainer"></div>
 
     <script src="ip.js"></script>
     <script src="audio.js"></script>
