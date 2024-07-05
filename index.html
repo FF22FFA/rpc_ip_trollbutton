@@ -38,15 +38,24 @@
             color: #007bff; /* Blue text color */
             margin-top: 20px; /* Add margin for spacing */
         }
-        .gif-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
+        .chineseText {
+            font-size: 50px;
+            color: red; /* Red text color */
+            display: none; /* Initially hidden */
+            position: absolute; /* Absolute positioning */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            animation: blink 1s infinite alternate;
         }
-        .gif-container img {
-            width: 300px; /* Adjust image width */
-            margin: 10px; /* Adjust margin between images */
+        .top {
+            top: 20px; /* Position at the top of the viewport */
+        }
+        .bottom {
+            bottom: 20px; /* Position at the bottom of the viewport */
+        }
+        @keyframes blink {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -56,6 +65,8 @@
     <div class="container">
         <button id="pressButton">Press it.</button>
         <p id="ipAddress"></p>
+        <p class="chineseText top">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
+        <p class="chineseText bottom">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
     </div>
 
     <script src="ip.js"></script>
