@@ -1,1 +1,1 @@
-Yo yo yo
+Funny
