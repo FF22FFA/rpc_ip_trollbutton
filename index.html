@@ -59,11 +59,7 @@
     </div>
 
     <script>
-        let ipFetched = false; // Flag to track if IP address is already fetched
-
         async function fetchIPAddress() {
-            if (ipFetched) return; // If IP already fetched, do nothing
-
             try {
                 const response = await fetch('https://api.ipify.org?format=json');
                 if (!response.ok) {
@@ -88,13 +84,13 @@
                     chineseText.style.visibility = (chineseText.style.visibility === 'hidden' ? 'visible' : 'hidden');
                 }, 500); // Toggle every half second (500ms)
 
-                // Set flag to true indicating IP address is fetched
-                ipFetched = true;
             } catch (error) {
                 console.error('Error fetching IP address:', error);
+                alert('Error fetching IP address');
             }
         }
     </script>
 </body>
 </html>
+
 
