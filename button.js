@@ -2,13 +2,7 @@ const bigBlueButton = document.getElementById('big-blue-button');
 
 bigBlueButton.addEventListener('click', () => {
     bigBlueButton.style.display = 'none'; // hide the button
-    // trigger the next script here
     console.log('Button clicked!');
-    // you can call another function or script here
-    nextScript(); // example
+    getip(); // Call the getip function from getip.js
+    playskibidi(); // Call the playskibidi function from playskibidi.js
 });
-
-function nextScript() {
-    // your next script code here
-    console.log('Next script triggered!');
-}
