@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Press it.</title> <!-- Initial title -->
+    <title>IP and Audio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,15 +33,14 @@
             background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
         }
         #ipAddress {
-            font-size: 150px; /* Adjust font size */
-            margin-top: 20px; /* Add margin for spacing */
             font-family: 'Montserrat', sans-serif; /* Montserrat font */
-            color: blue; /* Blue text color */
-            text-shadow: 0 0 5px white; /* White shadow for better visibility */
+            font-size: 150px; /* Adjust font size */
+            color: #007bff; /* Blue text color */
+            margin-top: 20px; /* Add margin for spacing */
         }
         #chineseText {
             font-size: 50px;
-            color: red; /* Red text color for Chinese text */
+            color: red; /* Red text color */
             display: none; /* Initially hidden */
             position: absolute; /* Absolute positioning */
             top: 20px; /* Position above the IP address */
@@ -50,14 +49,6 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <button id="pressButton" onclick="fetchIPAddress()">Press it.</button>
-        <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
-        <p id="ipAddress"></p>
-    </div>
-
     <script>
         async function fetchIPAddress() {
             try {
@@ -67,7 +58,7 @@
                 }
                 const data = await response.json();
                 const ipAddress = data.ip;
-
+                
                 // Update tab title with IP address
                 document.title = ipAddress;
 
@@ -84,13 +75,37 @@
                     chineseText.style.visibility = (chineseText.style.visibility === 'hidden' ? 'visible' : 'hidden');
                 }, 500); // Toggle every half second (500ms)
 
+                // Play audio files
+                playAudios();
             } catch (error) {
                 console.error('Error fetching IP address:', error);
                 alert('Error fetching IP address');
             }
         }
+
+        function playAudios() {
+            const audioSources = [
+                'https://www.dropbox.com/scl/fi/g47boikuaibndauudpvr2/cfwip.mp3?rlkey=s0ml1rir3c1g0zuuw7kuaw82o&st=pd4ka0n1&dl=1',
+                'https://www.dropbox.com/scl/fi/xw953doh9hh0ng2zo6bg7/Pyrocynical-Chinese-meme-original.mp3?rlkey=zgx7bi6hr8lkuvj1m8xam3mub&st=0j35oyb9&dl=1',
+                'https://www.dropbox.com/scl/fi/41qdt1ecpb4vsvlcvv983/Adolf-Hitler-Speech-at-Krupp-Factory-in-Germany-1935-British-Path.mp3?rlkey=dm9fbp43k9znaqpz4rfju9cmd&st=zf017fi1&dl=1',
+                'https://www.dropbox.com/scl/fi/pupam11imbxe65h5uz2d0/Ambatukam-Sound-Effect.mp3?rlkey=x22w99tih8vxib0g69dybnbbq&st=d5lg6d53&dl=1',
+                'https://www.dropbox.com/scl/fi/z2zec0koorovqvzllfief/Is-that-D-good-Yes-king-TikTok-audio.mp3?rlkey=voxjph7v3964cj3crxpin5h6b&st=f85qau9r&dl=1'
+                // Add more audio URLs as needed
+            ];
+
+            // Create Audio objects for each source
+            const audios = audioSources.map(source => new Audio(source));
+
+            // Play all audios simultaneously
+            audios.forEach(audio => audio.play());
+        }
     </script>
+</head>
+<body>
+    <div class="container">
+        <button id="pressButton" onclick="fetchIPAddress()">Press it.</button>
+        <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
+        <p id="ipAddress"></p>
+    </div>
 </body>
 </html>
-
-
