@@ -19,12 +19,12 @@
             position: relative; /* Ensure relative positioning for absolute children */
         }
         button {
-            padding: 30px 60px; /* 3x bigger padding */
-            font-size: 54px; /* 3x bigger font size */
+            padding: 10px 20px;
+            font-size: 18px;
             font-family: 'Orbitron', sans-serif; /* Orbitron font */
             background-color: transparent; /* Transparent background */
             color: #007bff; /* Blue text color */
-            border: 6px solid white; /* White border, 3x thicker */
+            border: 2px solid white; /* White border */
             cursor: pointer;
             margin-top: 20px;
             transition: background-color 0.3s ease;
@@ -33,14 +33,15 @@
             background-color: rgba(255, 255, 255, 0.1); /* Light background on hover */
         }
         #ipAddress {
-            font-family: 'Montserrat', sans-serif; /* Montserrat font */
-            font-size: 150px; /* Adjusted font size */
-            color: #007bff; /* Blue text color */
+            font-size: 150px; /* Adjust font size */
             margin-top: 20px; /* Add margin for spacing */
+            font-family: 'Montserrat', sans-serif; /* Montserrat font */
+            color: blue; /* Blue text color */
+            text-shadow: 0 0 5px white; /* White shadow for better visibility */
         }
         #chineseText {
             font-size: 50px;
-            color: red; /* Red text color */
+            color: red; /* Red text color for Chinese text */
             display: none; /* Initially hidden */
             position: absolute; /* Absolute positioning */
             top: 20px; /* Position above the IP address */
@@ -49,7 +50,6 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -59,7 +59,11 @@
     </div>
 
     <script>
+        let ipFetched = false; // Flag to track if IP address is already fetched
+
         async function fetchIPAddress() {
+            if (ipFetched) return; // If IP already fetched, do nothing
+
             try {
                 const response = await fetch('https://api.ipify.org?format=json');
                 if (!response.ok) {
@@ -67,7 +71,7 @@
                 }
                 const data = await response.json();
                 const ipAddress = data.ip;
-                
+
                 // Update tab title with IP address
                 document.title = ipAddress;
 
@@ -83,11 +87,14 @@
                     const chineseText = document.getElementById('chineseText');
                     chineseText.style.visibility = (chineseText.style.visibility === 'hidden' ? 'visible' : 'hidden');
                 }, 500); // Toggle every half second (500ms)
+
+                // Set flag to true indicating IP address is fetched
+                ipFetched = true;
             } catch (error) {
                 console.error('Error fetching IP address:', error);
-                alert('Error fetching IP address');
             }
         }
     </script>
 </body>
 </html>
+
