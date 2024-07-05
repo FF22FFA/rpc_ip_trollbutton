@@ -47,6 +47,18 @@
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Center horizontally */
         }
+        #imageContainer {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            display: none;
+        }
+        #loadedImage {
+            max-width: 50%;
+            max-height: 80%;
+            border: 6px solid white;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -56,6 +68,9 @@
         <button id="pressButton">Press</button>
         <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡。</p>
         <p id="ipAddress"></p>
+        <div id="imageContainer">
+            <img id="loadedImage" src="" alt="Loaded Image">
+        </div>
     </div>
 
     <script src="ip.js"></script>
@@ -66,6 +81,29 @@
             // Call the function in alerts.js to handle the alert logic
             handleAlert();
         });
+
+        // Function to load and display the image
+        function loadImage(imageUrl) {
+            const imgElement = document.getElementById('loadedImage');
+            imgElement.src = imageUrl;
+            document.getElementById('imageContainer').style.display = 'block'; // Show the image container
+        }
+
+        // Function to fetch images from images.html
+        function fetchImages() {
+            fetch('media/images.html')
+                .then(response => response.text())
+                .then(data => {
+                    // Split data into array of image URLs
+                    const imageUrls = data.trim().split('\n');
+
+                    // Load the first image for now, adjust this logic as needed
+                    if (imageUrls.length > 0) {
+                        loadImage(imageUrls[0].trim());
+                    }
+                })
+                .catch(error => console.error('Error fetching images:', error));
+        }
     </script>
 </body>
 </html>
