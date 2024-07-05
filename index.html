@@ -43,9 +43,12 @@
             color: red; /* Red text color */
             display: none; /* Initially hidden */
             position: absolute; /* Absolute positioning */
-            top: calc(100vh - 200px); /* Adjust position */
+            top: 20px; /* Position at the top */
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Center horizontally */
+        }
+        #chineseText.bottom {
+            top: calc(100vh - 200px); /* Position at the bottom */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -69,6 +72,12 @@
                 // If user clicks OK, proceed with fetching IP and playing audio
                 fetchIPAddress(); // Trigger IP fetching
                 playAudios(); // Trigger audio playback
+
+                // Show Chinese text at the top and bottom after delay
+                setTimeout(() => {
+                    document.getElementById('chineseText').style.display = 'block';
+                    document.getElementById('chineseText').classList.add('bottom');
+                }, 5000); // Adjust delay as needed (5000ms = 5 seconds)
             } else {
                 // If user cancels, do nothing or show another message
                 alert("You chose not to proceed. Click the button again when ready.");
