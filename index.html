@@ -52,38 +52,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>
+        alert("Lower your volume before proceeding. Click OK when ready.");
+    </script>
+    
     <div class="container">
         <button id="pressButton">Press it.</button>
         <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
         <p id="ipAddress"></p>
     </div>
 
+    <script src="ip.js"></script>
+    <script src="audio.js"></script>
     <script>
-        // Display an alert before proceeding
-        window.alert("Sorry, please click OK to continue.");
-
-        // Function to load gifs.html content
-        function loadGifs() {
-            fetch('gifs.html')
-                .then(response => response.text())
-                .then(data => {
-                    // Insert gifs.html content into current page
-                    document.body.innerHTML += data;
-                })
-                .catch(error => console.error('Error loading gifs.html:', error));
-        }
-
-        // Load gifs.html content
-        loadGifs();
-
-        // Event listener for button click
         document.getElementById('pressButton').addEventListener('click', function() {
             fetchIPAddress(); // Trigger IP fetching
             playAudios(); // Trigger audio playback
         });
     </script>
-
-    <script src="ip.js"></script>
-    <script src="audio.js"></script>
 </body>
 </html>
+
