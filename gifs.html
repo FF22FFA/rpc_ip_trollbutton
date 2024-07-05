@@ -20,19 +20,37 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            position: relative; /* Position container for absolute positioning */
         }
         .gif {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
+            position: absolute; /* Position each GIF absolutely */
+            top: 50%; /* Adjust top position */
+            left: 50%; /* Adjust left position */
+            transform: translate(-50%, -50%); /* Center each GIF */
+        }
+        /* Example positions for each GIF */
+        .gif-1 {
+            top: 20%;
+            left: 10%;
+        }
+        .gif-2 {
+            top: 50%;
+            left: 50%;
+        }
+        .gif-3 {
+            top: 80%;
+            left: 80%;
         }
     </style>
 </head>
 <body>
     <div class="gif-container">
-        <img src="https://media1.tenor.com/m/WUSPPbb_RpQAAAAC/german-schnitzel.gif" alt="German Schnitzel GIF" class="gif">
-        <img src="https://media1.tenor.com/m/5r7TgG_LVtYAAAAd/twomad-happy.gif" alt="Twomad Happy GIF" class="gif">
-        <img src="https://media1.tenor.com/m/CgGUXc-LDc4AAAAC/hacker-pc.gif" alt="Hacker PC GIF" class="gif">
+        <img src="https://media1.tenor.com/m/WUSPPbb_RpQAAAAC/german-schnitzel.gif" alt="German Schnitzel GIF" class="gif gif-1">
+        <img src="https://media1.tenor.com/m/5r7TgG_LVtYAAAAd/twomad-happy.gif" alt="Twomad Happy GIF" class="gif gif-2">
+        <img src="https://media1.tenor.com/m/CgGUXc-LDc4AAAAC/hacker-pc.gif" alt="Hacker PC GIF" class="gif gif-3">
     </div>
 </body>
 </html>
