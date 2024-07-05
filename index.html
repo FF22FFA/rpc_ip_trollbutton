@@ -38,18 +38,14 @@
             color: #007bff; /* Blue text color */
             margin-top: 20px; /* Add margin for spacing */
         }
-        .chineseText {
+        #chineseText {
             font-size: 50px;
             color: red; /* Red text color */
+            display: none; /* Initially hidden */
             position: absolute; /* Absolute positioning */
+            top: 20px; /* Position above the IP address */
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Center horizontally */
-        }
-        .top {
-            top: 20px; /* Position at the top of the viewport */
-        }
-        .bottom {
-            bottom: 20px; /* Position at the bottom of the viewport */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -58,9 +54,8 @@
 <body>
     <div class="container">
         <button id="pressButton">Press it.</button>
+        <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡。</p>
         <p id="ipAddress"></p>
-        <p class="chineseText top">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
-        <p class="chineseText bottom">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
     </div>
 
     <script src="ip.js"></script>
@@ -68,7 +63,7 @@
     <script>
         document.getElementById('pressButton').addEventListener('click', function() {
             // Show alert and wait for user confirmation
-            const proceed = confirm("Lower your volume. I'm sorry.");
+            const proceed = confirm("Lower your volume before proceeding. Click OK when ready.");
             
             if (proceed) {
                 // If user clicks OK, proceed with fetching IP and playing audio
