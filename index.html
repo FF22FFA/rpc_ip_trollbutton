@@ -53,9 +53,9 @@
         .bottom {
             bottom: 20px; /* Position at the bottom of the viewport */
         }
-        @keyframes blink {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .gif-container {
+            position: absolute;
+            display: none; /* Initially hidden */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -92,11 +92,12 @@
                         // Select GIFs from the parsed HTML
                         const gifs = tempDiv.querySelectorAll('img');
 
-                        // Display each GIF
-                        gifs.forEach(gif => {
-                            gif.style.display = 'block'; // Show GIF
+                        // Display each GIF with custom positions
+                        gifs.forEach((gif, index) => {
                             const gifContainer = document.createElement('div');
                             gifContainer.classList.add('gif-container');
+                            gifContainer.style.top = `${index * 150}px`; // Adjust top position dynamically
+                            gifContainer.style.left = `${index * 150}px`; // Adjust left position dynamically
                             gifContainer.appendChild(gif);
                             document.body.appendChild(gifContainer); // Append to body or another container
                         });
