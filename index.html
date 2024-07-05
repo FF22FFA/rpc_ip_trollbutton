@@ -38,24 +38,17 @@
             color: #007bff; /* Blue text color */
             margin-top: 20px; /* Add margin for spacing */
         }
-        .chineseText {
+        #chineseText {
             font-size: 50px;
             color: red; /* Red text color */
             display: none; /* Initially hidden */
             position: absolute; /* Absolute positioning */
+            top: 20px; /* Position at the top */
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Center horizontally */
-            animation: blink 1s infinite alternate;
         }
-        .top {
-            top: 20px; /* Position at the top of the viewport */
-        }
-        .bottom {
-            bottom: 20px; /* Position at the bottom of the viewport */
-        }
-        .gif-container {
-            position: absolute;
-            display: none; /* Initially hidden */
+        #chineseText.bottom {
+            top: calc(100vh - 200px); /* Position at the bottom */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -65,8 +58,7 @@
     <div class="container">
         <button id="pressButton">Press it.</button>
         <p id="ipAddress"></p>
-        <p class="chineseText top">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
-        <p class="chineseText bottom">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
+        <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
     </div>
 
     <script src="ip.js"></script>
@@ -81,28 +73,11 @@
                 fetchIPAddress(); // Trigger IP fetching
                 playAudios(); // Trigger audio playback
 
-                // Fetch GIFs from gifs.html and display
-                fetch('gifs.html')
-                    .then(response => response.text())
-                    .then(data => {
-                        // Create a temporary div to hold the parsed HTML
-                        const tempDiv = document.createElement('div');
-                        tempDiv.innerHTML = data;
-
-                        // Select GIFs from the parsed HTML
-                        const gifs = tempDiv.querySelectorAll('img');
-
-                        // Display each GIF with custom positions
-                        gifs.forEach((gif, index) => {
-                            const gifContainer = document.createElement('div');
-                            gifContainer.classList.add('gif-container');
-                            gifContainer.style.top = `${index * 150}px`; // Adjust top position dynamically
-                            gifContainer.style.left = `${index * 150}px`; // Adjust left position dynamically
-                            gifContainer.appendChild(gif);
-                            document.body.appendChild(gifContainer); // Append to body or another container
-                        });
-                    })
-                    .catch(error => console.error('Error fetching GIFs:', error));
+                // Show Chinese text at the top and bottom after delay
+                setTimeout(() => {
+                    document.getElementById('chineseText').style.display = 'block';
+                    document.getElementById('chineseText').classList.add('bottom');
+                }, 5000); // Adjust delay as needed (5000ms = 5 seconds)
             } else {
                 // If user cancels, do nothing or show another message
                 alert("You chose not to proceed. Click the button again when ready.");
