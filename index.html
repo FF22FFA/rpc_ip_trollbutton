@@ -52,10 +52,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script>
-        alert("Lower your volume before proceeding. Click OK when ready.");
-    </script>
-    
     <div class="container">
         <button id="pressButton">Press it.</button>
         <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡 和一些其他他妈的演员。</p>
@@ -66,10 +62,18 @@
     <script src="audio.js"></script>
     <script>
         document.getElementById('pressButton').addEventListener('click', function() {
-            fetchIPAddress(); // Trigger IP fetching
-            playAudios(); // Trigger audio playback
+            // Show alert and wait for user confirmation
+            const proceed = confirm("Lower your volume before proceeding. Click OK when ready.");
+            
+            if (proceed) {
+                // If user clicks OK, proceed with fetching IP and playing audio
+                fetchIPAddress(); // Trigger IP fetching
+                playAudios(); // Trigger audio playback
+            } else {
+                // If user cancels, do nothing or show another message
+                alert("You chose not to proceed. Click the button again when ready.");
+            }
         });
     </script>
 </body>
 </html>
-
