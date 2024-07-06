@@ -47,8 +47,15 @@
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Center horizontally */
         }
-        #imageContainer {
+        .image-container {
+            display: flex;
+            justify-content: flex-start;
             margin-top: 20px; /* Add margin for spacing */
+        }
+        .image-container img {
+            max-width: 50%; /* 50% smaller */
+            max-height: 300px; /* Adjust height as needed */
+            margin: 0 10px; /* Adjust spacing between images */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -59,7 +66,7 @@
         <button id="pressButton">Press</button>
         <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡。</p>
         <p id="ipAddress"></p>
-        <div id="imageContainer"></div>
+        <div class="image-container" id="imageContainer"></div>
     </div>
 
     <script src="ip.js"></script>
@@ -70,15 +77,24 @@
             // Call the function in alerts.js to handle the alert logic
             handleAlert();
 
-            // Load the image
-            const imageUrl = "https://i.imgur.com/QMaEDXn.jpeg"; // Replace with your image URL
+            // Array of image URLs to load
+            const imageUrls = [
+                "https://i.imgur.com/QMaEDXn.jpeg",
+                "https://example.com/another-image.jpg", // Add more URLs as needed
+            ];
 
             const imageContainer = document.getElementById('imageContainer');
-            const img = new Image();
-            img.src = imageUrl;
-            img.onload = function() {
-                imageContainer.appendChild(img);
-            };
+            // Clear previous images if any
+            imageContainer.innerHTML = '';
+
+            // Loop through image URLs and create img elements
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+                img.onload = function() {
+                    imageContainer.appendChild(img);
+                };
+            });
         });
     </script>
 </body>
