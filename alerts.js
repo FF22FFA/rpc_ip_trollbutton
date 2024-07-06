@@ -11,6 +11,6 @@ function handleAlert() {
         playAudios(); // Trigger audio playback
     } else {
         // If user cancels, do nothing or show another message
-        alert("You chose not to proceed. Click the button again when ready.");
+        alert("No");
     }
 }
