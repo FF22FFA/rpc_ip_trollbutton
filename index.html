@@ -48,14 +48,7 @@
             transform: translateX(-50%); /* Center horizontally */
         }
         #imageContainer {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        #imageContainer img {
-            max-width: 100%;
-            height: auto;
-            display: none; /* Initially hidden */
+            margin-top: 20px; /* Add margin for spacing */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -66,9 +59,8 @@
         <button id="pressButton">Press</button>
         <p id="chineseText">朋友是一个坚韧不拔的纪录片， 在香港这座城市的设置。 主演：钱德勒 索罗斯 傅博斯1 瑞秋 莫妮卡。</p>
         <p id="ipAddress"></p>
+        <div id="imageContainer"></div>
     </div>
-
-    <div id="imageContainer"></div>
 
     <script src="ip.js"></script>
     <script src="audio.js"></script>
@@ -77,25 +69,17 @@
         document.getElementById('pressButton').addEventListener('click', function() {
             // Call the function in alerts.js to handle the alert logic
             handleAlert();
-        });
 
-        function fetchAndDisplayImages() {
-            const imageUrls = [
-                "https://i.imgur.com/QMaEDXn.jpeg" // Add more image URLs if needed
-            ];
+            // Load the image
+            const imageUrl = "https://i.imgur.com/QMaEDXn.jpeg"; // Replace with your image URL
 
             const imageContainer = document.getElementById('imageContainer');
-            imageContainer.innerHTML = ''; // Clear previous images
-
-            imageUrls.forEach(url => {
-                const img = new Image();
-                img.src = url;
-                img.onload = function() {
-                    img.style.display = 'block'; // Show image once loaded
-                };
+            const img = new Image();
+            img.src = imageUrl;
+            img.onload = function() {
                 imageContainer.appendChild(img);
-            });
-        }
+            };
+        });
     </script>
 </body>
 </html>
